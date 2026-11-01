@@ -1,0 +1,215 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main background */
+.forgot {
+    background-color: #F0F9FF;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Forgot password card */
+.fSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 27%;
+    min-width: 350px;
+    max-width: 450px;
+    padding: 25px 20px;
+    min-height: 65%;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #E0EDF5;
+    box-shadow: 0 4px 20px rgba(23, 50, 77, 0.08);
+}
+
+/* Heading */
+.fSection h1 {
+    color: #17324D;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+/* Description */
+.fSection p {
+    color: #36566B;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Form container */
+.fInside {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+     
+}
+
+.fSection .error-message {
+    color: red;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+
+
+
+
+/* Form */
+.form1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+}
+
+.form1 label {
+    color: #17324D;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Email input */
+.form1 input {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #D5E2EB;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.form1 input:focus {
+    border-color: #006194;
+}
+
+/* Send reset link button */
+.form1 button {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #006194;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.form1 button:hover {
+    background-color: #004B73;
+}
+
+/* Back to login link */
+.form1 a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    text-align: center;
+    text-decoration: none;
+    color: #006194;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+/* Tablet devices */
+@media (min-width: 481px) and (max-width: 768px) {
+    .forgot {
+        padding: 25px;
+    }
+
+    .fSection {
+        width: 70%;
+        min-width: 0;
+        max-width: 450px;
+        min-height: auto;
+        padding: 30px 25px;
+    }
+
+    .fSection h1 {
+        font-size: 28px;
+    }
+
+    .fSection p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .forgot {
+        padding: 16px;
+        min-height: 100vh;
+    }
+
+    .fSection {
+        width: 100%;
+        min-width: 0;
+        max-width: 400px;
+        min-height: auto;
+        padding: 25px 18px;
+    }
+
+    .fSection h1 {
+        font-size: 25px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .fSection p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .fSection br {
+        display: none;
+    }
+
+    .form1 {
+        gap: 8px;
+    }
+
+    .form1 input,
+    .form1 button {
+        height: 42px;
+        font-size: 14px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+    .fSection {
+        padding: 22px 14px;
+    }
+
+    .fSection h1 {
+        font-size: 22px;
+    }
+
+    .fSection p {
+        font-size: 13px;
+    }
+
+    .form1 a {
+        font-size: 13px;
+    }
+}

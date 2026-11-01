@@ -1,0 +1,168 @@
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main page */
+.Main {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #F0F9FF;
+}
+
+/* Main card */
+.main-section {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(191, 199, 210, 0.4);
+    box-shadow: 0 4px 15px rgba(23, 50, 77, 0.06);
+}
+
+/* Heading section */
+.section11 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 8px;
+    text-align: center;
+}
+
+.section11 h1 {
+    color: #17324D;
+    font-size: 26px;
+}
+
+.section11 p {
+    color: #36566B;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Content section */
+.section22 {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Information box */
+.section2-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #F0F9FF;
+    border: 1px solid #E0EDF5;
+    border-radius: 14px;
+}
+
+.section2-box h6 {
+    color: #17324D;
+    font-size: 15px;
+}
+
+.section2-box p {
+    color: #36566B;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Continue button */
+.section22 button {
+    width: 100%;
+    margin-top: 20px;
+    min-height: 42px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #006194;
+    color: #F0F9FF;
+    font-size: 14px;
+}
+
+.section22 button:hover {
+    background-color: #004B73;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .Main {
+        padding: 24px;
+    }
+
+    .main-section {
+        max-width: 460px;
+        padding: 18px;
+    }
+
+    .section11 h1 {
+        font-size: 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .Main {
+        padding: 14px;
+    }
+
+    .main-section {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .section11 {
+        padding-top: 16px;
+    }
+
+    .section11 h1 {
+        font-size: 21px;
+    }
+
+    .section11 p {
+        font-size: 13px;
+    }
+
+    .section22 {
+        padding: 6px;
+        margin: 8px 0;
+    }
+
+    .section2-box {
+        padding: 14px;
+        gap: 10px;
+    }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+    .Main {
+        padding: 10px;
+    }
+
+    .main-section {
+        padding: 12px;
+    }
+
+    .section11 h1 {
+        font-size: 19px;
+    }
+
+    .section2-box {
+        padding: 12px;
+    }
+}
