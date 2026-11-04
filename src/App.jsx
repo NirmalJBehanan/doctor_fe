@@ -15,6 +15,8 @@ import AdminDash from './component/admin/AdminDash'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { login, logout } from './slice/Auth'
+import MyAppointments from './component/patient/MyAppointments'
+import ManageSlots from './component/doctor/ManageSlots'
 
 const App = () => {
    const { token } = useSelector((state) => state.auth);
@@ -89,6 +91,14 @@ const App = () => {
     {
       path: "/admin/dashboard",
       element: <AdminDash />
+    },
+    {
+      path: "/myAppoinment",
+      element: <MyAppointments />
+    },
+    {
+      path:"/ManageSlots",
+      element:<ManageSlots />
     }
   ])
   return (

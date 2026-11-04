@@ -23,7 +23,10 @@ const Navbars = () => {
         <div className='navbar_1_links'>
           <ul>
             <li>Home</li>
-            <li>Find Doctor</li>
+            <Link to="/findDoctors">
+              <li>Find Doctor</li>
+            </Link>
+
             {!isAuthenticated && (
               <>
                 <li><Link to="/about">About Us</Link></li>
@@ -35,7 +38,7 @@ const Navbars = () => {
               isAuthenticated && role === "user" && (
                 <>
                   <li>
-                    <Link to="/patient/appointments">
+                    <Link to="/myAppoinment">
                       My Appointments
                     </Link>
                   </li>
@@ -61,7 +64,7 @@ const Navbars = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/doctor/slots">
+                  <Link to="/ManageSlots">
                     Manage Slots
                   </Link>
                 </li>
@@ -100,7 +103,7 @@ const Navbars = () => {
           </ul>
         </div>
 
-        
+
         <div className='navbar_1_buttons'>
           {!isAuthenticated ? (
             <>
