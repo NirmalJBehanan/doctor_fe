@@ -17,35 +17,37 @@ import axios from 'axios'
 import { login, logout } from './slice/Auth'
 import MyAppointments from './component/patient/MyAppointments'
 import ManageSlots from './component/doctor/ManageSlots'
+import DoctorAppointments from './component/doctor/DoctorAppointments'
+import MyAppointmentHistory from './component/patient/MyAppointmentHistory'
 
 const App = () => {
-   const { token } = useSelector((state) => state.auth);
-    const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (!token) return;
+  useEffect(() => {
+    if (!token) return;
 
-        const checkUser = async () => {
-            try {
-                const response = await axios.get("/me", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+    const checkUser = async () => {
+      try {
+        const response = await axios.get("/me", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
 
-                dispatch(login({
-                    token,
-                    role: response.data.user.role
-                }));
+        dispatch(login({
+          token,
+          role: response.data.user.role
+        }));
 
-            } catch (error) {
-                dispatch(logout());
-                console.log("Authentication check failed");
-            }
-        };
+      } catch (error) {
+        dispatch(logout());
+        console.log("Authentication check failed");
+      }
+    };
 
-        checkUser();
-    }, [token, dispatch]);
+    checkUser();
+  }, [token, dispatch]);
 
   const router = createBrowserRouter([
     {
@@ -97,8 +99,16 @@ const App = () => {
       element: <MyAppointments />
     },
     {
-      path:"/ManageSlots",
-      element:<ManageSlots />
+      path: "/ManageSlots",
+      element: <ManageSlots />
+    },
+    {
+      path: "/doctorAppointments",
+      element: < DoctorAppointments />
+    },
+    {
+      path: "/myAppointmentHistory",
+      element: <MyAppointmentHistory />
     }
   ])
   return (

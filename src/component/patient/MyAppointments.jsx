@@ -114,77 +114,80 @@ const MyAppointments = () => {
 
     return (
         <>
-        <Navbars />
-        <div className="appointments-container">
+            <Navbars />
+            <div className="appointments-container">
 
-            <h2>My Appointments</h2>
+                <h2>My Appointments</h2>
 
-            {/* Response message */}
-            {message && (
-                <p
-                    className={
-                        messageType === "success"
-                            ? "success-message"
-                            : "error-message"
-                    }
-                >
-                    {message}
-                </p>
-            )}
-
-            {/* No appointments */}
-            {appointments.length === 0 && (
-                <p className="empty-message">
-                    You don't have any booked appointments.
-                </p>
-            )}
-
-            {/* Appointment list */}
-            <div className="appointments-list">
-
-                {appointments.map((appointment) => (
-
-                    <div
-                        className="appointment-card"
-                        key={appointment._id}
+                {/* Response message */}
+                {message && (
+                    <p
+                        className={
+                            messageType === "success"
+                                ? "success-message"
+                                : "error-message"
+                        }
                     >
+                        {message}
+                    </p>
+                )}
 
-                        <h3>
-                            Dr. {appointment.doctorId?.name || "Doctor"}
-                        </h3>
+                {/* No appointments */}
+                {appointments.length === 0 && (
+                    <p className="empty-message">
+                        You don't have any booked appointments.
+                    </p>
+                )}
 
-                        <p>
-                            <strong>Date:</strong>{" "}
-                            {appointment.date}
-                        </p>
+                {/* Appointment list */}
+                <div className="appointments-list">
 
-                        <p>
-                            <strong>Time:</strong>{" "}
-                            {appointment.startTime} - {appointment.endTime}
-                        </p>
+                    {appointments.map((appointment) => (
 
-                        <p>
-                            <strong>Status:</strong>{" "}
-                            {appointment.status}
-                        </p>
-
-                        <button
-                            className="cancel-btn"
-                            onClick={() => handleCancel(appointment._id)}
-                            disabled={cancellingId !== null}
+                        <div
+                            className="appointment-card"
+                            key={appointment._id}
                         >
-                            {cancellingId === appointment._id
-                                ? "Cancelling..."
-                                : "Cancel Appointment"}
-                        </button>
 
-                    </div>
+                            <h3>
+                                Dr. {appointment.doctorId?.name || "Doctor"}
+                            </h3>
 
-                ))}
+                            <p>
+                                <strong>Date:</strong>{" "}
+                                {appointment.date}
+                            </p>
+
+                            <p>
+                                <strong>Time:</strong>{" "}
+                                {appointment.startTime} - {appointment.endTime}
+                            </p>
+
+                            <p>
+                                <strong>Appointment Status:</strong>{" "}
+                                <span className={`appointment-status ${appointment.appointmentStatus}`}>
+                                    {appointment.appointmentStatus || "pending"}
+                                </span>
+                            </p>
+
+                            {["pending", "confirmed"].includes(appointment.appointmentStatus) && (
+                                <button
+                                    className="cancel-btn"
+                                    onClick={() => handleCancel(appointment._id)}
+                                    disabled={cancellingId !== null}
+                                >
+                                    {cancellingId === appointment._id
+                                        ? "Cancelling..."
+                                        : "Cancel Appointment"}
+                                </button>
+                            )}
+                        </div>
+
+                    ))}
+
+                </div>
 
             </div>
-
-        </div>
         </>
     );
 };

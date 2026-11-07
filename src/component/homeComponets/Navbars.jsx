@@ -43,6 +43,11 @@ const Navbars = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link to="/myAppointmentHistory">
+                      Appointment History
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/patient/profile">
                       My Profile
                     </Link>
@@ -59,7 +64,7 @@ const Navbars = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/doctor/appointments">
+                  <Link to="/doctorAppointments">
                     My Appointments
                   </Link>
                 </li>

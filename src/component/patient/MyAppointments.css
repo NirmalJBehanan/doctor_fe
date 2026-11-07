@@ -68,3 +68,25 @@
     margin-top: 30px;
     color: #666;
 }
+
+
+.appointment-status {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.appointment-status.pending {
+    color: #d97706;
+}
+
+.appointment-status.confirmed {
+    color: #198754;
+}
+
+.appointment-status.completed {
+    color: #0d6efd;
+}
+
+.appointment-status.cancelled {
+    color: #dc3545;
+}

@@ -1,0 +1,192 @@
+
+.doctor-appointments {
+    min-height: 100vh;
+    padding: 30px 5%;
+    background-color: #f5f7fb;
+}
+
+.doctor-appointments h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #263238;
+    font-size: 28px;
+}
+
+/* Date Filter */
+.date-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.date-filter label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #263238;
+}
+
+.date-filter input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+.date-filter input:focus {
+    border-color: #0d6efd;
+}
+
+.date-filter button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #263238;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.date-filter button:hover {
+    background-color: #455a64;
+}
+
+/* Messages */
+.appointment-message {
+    text-align: center;
+    color: #198754;
+    margin-bottom: 20px;
+}
+
+.appointment-loading,
+.no-appointments {
+    text-align: center;
+    font-size: 17px;
+    color: #666;
+    margin-top: 40px;
+}
+
+/* Appointment Cards */
+.appointments-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.appointment-card {
+    background-color: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.appointment-card h3 {
+    color: #263238;
+    margin-bottom: 15px;
+}
+
+.appointment-card p {
+    color: #555;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+/* Appointment Status */
+.appointment-status {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.appointment-status.pending {
+    color: #d97706;
+}
+
+.appointment-status.confirmed {
+    color: #198754;
+}
+
+.appointment-status.completed {
+    color: #0d6efd;
+}
+
+.appointment-status.cancelled {
+    color: #dc3545;
+}
+
+/* Action Buttons */
+.appointment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.appointment-actions button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.confirm-btn {
+    background-color: #198754;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #146c43;
+}
+
+.complete-btn {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.complete-btn:hover {
+    background-color: #0a58ca;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #bb2d3b;
+}
+
+.appointment-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .doctor-appointments {
+        padding: 20px 15px;
+    }
+
+    .doctor-appointments h2 {
+        font-size: 23px;
+    }
+
+    .date-filter {
+        flex-direction: column;
+    }
+
+    .date-filter input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .appointment-card {
+        padding: 17px;
+    }
+}
