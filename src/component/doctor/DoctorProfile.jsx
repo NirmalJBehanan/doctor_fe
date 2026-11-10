@@ -120,7 +120,7 @@ const DoctorProfile = () => {
 
                     {profile.profileImage && (
                         <img
-                            src={`http://localhost:3000/api/doctor-image/${profile.profileImage}`}
+                            src={`https://doctor-be-gbwe.onrender.com/api/doctor-image/${profile.profileImage}`}
                             alt="Doctor"
                             className="doctor-profile-image"
                         />

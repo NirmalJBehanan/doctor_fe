@@ -272,7 +272,7 @@ const ProfileDoctor = () => {
 
                             {doctor.profileImage ? (
                                 <img
-                                    src={`http://localhost:3000/api/doctor-image/${doctor.profileImage}`}
+                                    src={`https://doctor-be-gbwe.onrender.com/api/doctor-image/${doctor.profileImage}`}
                                     alt={doctor.doctorId.name}
                                 />
                             ) : (

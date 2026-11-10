@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import {store} from "./store/CreateStore.jsx"
 import axios from 'axios'
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = "https://doctor-be-gbwe.onrender.com/api";
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <StrictMode>
