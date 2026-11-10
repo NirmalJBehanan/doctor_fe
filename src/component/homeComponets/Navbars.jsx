@@ -56,7 +56,7 @@ const Navbars = () => {
               )
             }
 
-            {isAuthenticated && role === "Doctor" && (
+            {isAuthenticated && role === "doctor" && (
               <>
                 <li>
                   <Link to="/doctor/dashboard">

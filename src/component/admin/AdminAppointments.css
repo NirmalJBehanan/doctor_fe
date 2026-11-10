@@ -1,0 +1,229 @@
+
+.admin-appointments {
+    min-height: 100vh;
+    padding: 35px 5%;
+    background-color: #f4f7fb;
+}
+
+.appointments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.appointments-header h2 {
+    color: #1e293b;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.appointments-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.appointment-count {
+    background-color: #e0ecff;
+    color: #2563eb;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Filters */
+
+.appointment-filters {
+    display: flex;
+    align-items: end;
+    gap: 20px;
+    background-color: white;
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 600;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 11px 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+    color: #334155;
+    background-color: white;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #2563eb;
+}
+
+.clear-filter-btn {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 7px;
+    background-color: #e2e8f0;
+    color: #334155;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.clear-filter-btn:hover {
+    background-color: #cbd5e1;
+}
+
+/* Table */
+
+.appointments-table-container {
+    background-color: white;
+    border-radius: 10px;
+    overflow-x: auto;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+}
+
+.appointments-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    padding: 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.appointments-table td {
+    padding: 16px;
+    border-top: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 14px;
+}
+
+.appointments-table td strong {
+    display: block;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.appointments-table td small {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.appointments-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Status badges */
+
+.status-badge,
+.payment-badge,
+.refund-badge {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.confirmed,
+.paid {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.completed,
+.processed {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.cancelled,
+.failed {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.created,
+.not_requested,
+.unpaid {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.refund-badge.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+/* Messages */
+
+.appointment-message {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+}
+
+.appointment-error {
+    text-align: center;
+    padding: 40px;
+    color: #dc2626;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .admin-appointments {
+        padding: 25px 4%;
+    }
+
+    .appointments-header {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .appointment-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .clear-filter-btn {
+        width: 100%;
+    }
+}

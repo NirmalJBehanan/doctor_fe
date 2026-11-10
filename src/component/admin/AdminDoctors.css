@@ -1,0 +1,308 @@
+.admin-doctors-container {
+    min-height: 100vh;
+    padding: 40px 5%;
+    background: #f4f7fb;
+}
+
+.admin-doctors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-doctors-header h2 {
+    font-size: 28px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.admin-doctors-header p {
+    color: #64748b;
+    margin: 0;
+}
+
+.add-doctor-btn,
+.save-doctor-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.add-doctor-btn:hover,
+.save-doctor-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Messages */
+
+.admin-success-message,
+.admin-error-message {
+    padding: 13px 16px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+.admin-success-message {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.admin-error-message {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Forms */
+
+.doctor-form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.doctor-form-card h3 {
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.doctor-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.doctor-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.doctor-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.doctor-form-group input,
+.doctor-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.doctor-form-group input:focus,
+.doctor-form-group textarea:focus {
+    border-color: #2563eb;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.doctor-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.cancel-doctor-btn {
+    background: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancel-doctor-btn:hover {
+    background: #cbd5e1;
+}
+
+/* Doctors table */
+
+.doctors-list-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.doctors-list-section h3 {
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+
+.doctors-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.doctors-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+.doctors-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.doctors-table td {
+    padding: 16px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 14px;
+}
+
+.doctors-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.doctor-name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.doctor-name strong {
+    color: #1e293b;
+}
+
+.doctor-name span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Status */
+
+.doctor-status {
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.doctor-status.active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.doctor-status.inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Action buttons */
+
+.doctor-action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-doctor-btn,
+.activate-doctor-btn,
+.deactivate-doctor-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.edit-doctor-btn {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.activate-doctor-btn {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.deactivate-doctor-btn {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.edit-doctor-btn:hover {
+    background: #bfdbfe;
+}
+
+.activate-doctor-btn:hover {
+    background: #bbf7d0;
+}
+
+.deactivate-doctor-btn:hover {
+    background: #fecaca;
+}
+
+.doctor-loading,
+.doctor-empty {
+    text-align: center;
+    color: #64748b;
+    padding: 30px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .admin-doctors-container {
+        padding: 25px 4%;
+    }
+
+    .admin-doctors-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .doctor-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .doctors-list-section {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-doctors-header h2 {
+        font-size: 23px;
+    }
+
+    .doctor-form-actions {
+        flex-direction: column;
+    }
+
+    .doctor-form-actions button {
+        width: 100%;
+    }
+}

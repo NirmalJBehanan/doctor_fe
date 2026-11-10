@@ -1,0 +1,148 @@
+.admin-users-container {
+    min-height: 100vh;
+    padding: 40px 6%;
+    background-color: #f4f7fb;
+}
+
+.admin-users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.admin-users-header h2 {
+    font-size: 28px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.admin-users-header p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.total-patients {
+    background-color: #ffffff;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: #2563eb;
+    font-weight: 600;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.users-table-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.users-table th,
+.users-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.users-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.users-table td {
+    color: #334155;
+    font-size: 14px;
+}
+
+.users-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.user-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.user-status.active {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.user-status.inactive {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.user-action-btn {
+    border: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.user-action-btn.deactivate {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.user-action-btn.deactivate:hover {
+    background-color: #fecaca;
+}
+
+.user-action-btn.activate {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.user-action-btn.activate:hover {
+    background-color: #bbf7d0;
+}
+
+.users-message {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+}
+
+.users-error {
+    text-align: center;
+    padding: 30px;
+    color: #dc2626;
+}
+
+@media (max-width: 600px) {
+    .admin-users-container {
+        padding: 25px 4%;
+    }
+
+    .admin-users-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-users-header h2 {
+        font-size: 23px;
+    }
+
+    .total-patients {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

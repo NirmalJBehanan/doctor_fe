@@ -38,22 +38,31 @@ const FindDoctors = () => {
         },
 
         onSubmit: async (values) => {
-            try {
+    try {
 
-                const word = values.name.trim().toLowerCase()
+        const word = values.name.trim().toLowerCase();
 
-                const filter = doctors.filter((doc) => (
-                    doc.doctorId.name.toLowerCase().includes(word) ||
-                    doc.specialization.toLowerCase().includes(word)
-                ))
+        const filter = doctors.filter((doc) => {
 
-                setFilteredDoctors(filter)
-                setsearch(true)
-
-            } catch (error) {
-                console.log(error)
+            // Skip profiles whose doctor account is missing
+            if (!doc.doctorId) {
+                return false;
             }
-        }
+
+            const doctorName = doc.doctorId.name?.toLowerCase() || "";
+            const specialization = doc.specialization?.toLowerCase() || "";
+
+            return doctorName.includes(word) ||
+                specialization.includes(word);
+        });
+
+        setFilteredDoctors(filter);
+        setsearch(true);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
     })
 
     return (

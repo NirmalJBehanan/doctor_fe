@@ -19,6 +19,9 @@ import MyAppointments from './component/patient/MyAppointments'
 import ManageSlots from './component/doctor/ManageSlots'
 import DoctorAppointments from './component/doctor/DoctorAppointments'
 import MyAppointmentHistory from './component/patient/MyAppointmentHistory'
+import AdminUsers from './component/admin/AdminUsers'
+import AdminDoctors from './component/admin/AdminDoctors'
+import AdminAppointments from './component/admin/AdminAppointments'
 
 const App = () => {
   const { token } = useSelector((state) => state.auth);
@@ -109,6 +112,18 @@ const App = () => {
     {
       path: "/myAppointmentHistory",
       element: <MyAppointmentHistory />
+    },
+    {
+      path: "/admin/users",
+      element: <AdminUsers />
+    },
+    {
+      path: "/admin/doctors",
+      element: <AdminDoctors />
+    },
+    {
+      path: "/admin/appointments",
+      element: <AdminAppointments />
     }
   ])
   return (
