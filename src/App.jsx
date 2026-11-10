@@ -26,6 +26,8 @@ import About from './component/homeComponets/About'
 import Contact from './component/homeComponets/Contact'
 import DoctorProfile from './component/doctor/DoctorProfile'
 import PatientProfile from './component/patient/PatientProfile'
+import PublicRoute from './component/PublicRoute'
+import ProtectedRoute from './component/ProtectedRoute'
 
 const App = () => {
   const { token } = useSelector((state) => state.auth);
@@ -56,96 +58,127 @@ const App = () => {
     checkUser();
   }, [token, dispatch]);
 
-  const router = createBrowserRouter([
+ 
+const router = createBrowserRouter([
+    // Public routes
     {
-      path: "/",
-      element: <Home />
+        element: <PublicRoute />,
+        children: [
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/register",
+                element: <Register />
+            },
+            {
+                path: "/forgot",
+                element: <Forgot />
+            },
+            {
+                path: "/reset/:token",
+                element: <Reset />
+            }
+        ]
+    },
+
+    // Routes accessible without login
+    {
+        path: "/",
+        element: <Home />
     },
     {
-      path: "/login",
-      element: <Login />
+        path: "/activate/:token",
+        element: <Activate />
     },
     {
-      path: "/register",
-      element: <Register />
+        path: "/findDoctors",
+        element: <FindDoctors />
     },
     {
-      path: "/activate/:token",
-      element: <Activate />
+        path: "/profileDoctor/:id",
+        element: <ProfileDoctor />
     },
     {
-      path: "/forgot",
-      element: <Forgot />
+        path: "/about",
+        element: <About />
     },
     {
-      path: "/reset/:token",
-      element: <Reset />
+        path: "/contact",
+        element: <Contact />
     },
+
+    // Patient routes
     {
-      path: "/findDoctors",
-      element: <FindDoctors />
+        element: <ProtectedRoute allowedRoles={["user"]} />,
+        children: [
+            {
+                path: "/patient/dashboard",
+                element: <PatientDashboard />
+            },
+            {
+                path: "/myAppoinment",
+                element: <MyAppointments />
+            },
+            {
+                path: "/myAppointmentHistory",
+                element: <MyAppointmentHistory />
+            },
+            {
+                path: "/patientProfile",
+                element: <PatientProfile />
+            }
+        ]
     },
+
+    // Doctor routes
     {
-      path: "/profileDoctor/:id",
-      element: <ProfileDoctor />
+        element: <ProtectedRoute allowedRoles={["doctor"]} />,
+        children: [
+            {
+                path: "/doctor/dashboard",
+                element: <DoctorDash />
+            },
+            {
+                path: "/ManageSlots",
+                element: <ManageSlots />
+            },
+            {
+                path: "/doctorAppointments",
+                element: <DoctorAppointments />
+            },
+            {
+                path: "/doctor/profile",
+                element: <DoctorProfile />
+            }
+        ]
     },
+
+    // Admin routes
     {
-      path: "/patient/dashboard",
-      element: <PatientDashboard />
-    },
-    {
-      path: "/doctor/dashboard",
-      element: <DoctorDash />
-    },
-    {
-      path: "/admin/dashboard",
-      element: <AdminDash />
-    },
-    {
-      path: "/myAppoinment",
-      element: <MyAppointments />
-    },
-    {
-      path: "/ManageSlots",
-      element: <ManageSlots />
-    },
-    {
-      path: "/doctorAppointments",
-      element: < DoctorAppointments />
-    },
-    {
-      path: "/myAppointmentHistory",
-      element: <MyAppointmentHistory />
-    },
-    {
-      path: "/admin/users",
-      element: <AdminUsers />
-    },
-    {
-      path: "/admin/doctors",
-      element: <AdminDoctors />
-    },
-    {
-      path: "/admin/appointments",
-      element: <AdminAppointments />
-    },
-    {
-      path: "/about",
-      element: <About />
-    },
-    {
-      path: "/contact",
-      element: <Contact />
-    },
-    {
-      path: "/doctor/profile",
-      element: <DoctorProfile />
-    },
-    {
-      path: "/patientProfile",
-      element: <PatientProfile />
+        element: <ProtectedRoute allowedRoles={["admin"]} />,
+        children: [
+            {
+                path: "/admin/dashboard",
+                element: <AdminDash />
+            },
+            {
+                path: "/admin/users",
+                element: <AdminUsers />
+            },
+            {
+                path: "/admin/doctors",
+                element: <AdminDoctors />
+            },
+            {
+                path: "/admin/appointments",
+                element: <AdminAppointments />
+            }
+        ]
     }
-  ])
+]);
+
   return (
     <>
       <RouterProvider router={router}>
