@@ -5,7 +5,8 @@ import general from "../../assets/homeImages/general.jpg"
 import pedia from "../../assets/homeImages/pedia.jpg"
 import neuro from "../../assets/homeImages/neuro.jpg"
 import ortho from "../../assets/homeImages/ortho.jpg"
-
+import "../../App.css"
+import { Link } from 'react-router-dom'
 const Head = () => {
     return (
         <>
@@ -122,39 +123,44 @@ const Head = () => {
             </div>
 
 
-            <div className='footer'>
-                <div className='footer-1'>
-                    <h2 className='footer-medi'>MediSlot</h2>
-                    <p>MediSlot is a modern healthcare access platform connecting patients with trusted,
-                         verified medical professionals nationwide.</p>
+
+            <footer className="footer">
+                <div className="footer-container">
+
+                    {/* Brand */}
+                    <div className="footer-brand">
+                        <h2 className="footer-medi">MediSlot</h2>
+                        <p>
+                            Your healthcare, made simple.
+                            Find trusted doctors and book appointments easily.
+                        </p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="footer-links">
+                        <h3>Quick Links</h3>
+                        <Link to="/">Home</Link>
+                        <Link to="/findDoctors">Find Doctors</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/register">Register</Link>
+                    </div>
+
+                    {/* Contact */}
+                    <div className="footer-contact">
+                        <h3>Contact Us</h3>
+                        <a href="mailto:nirmalbehanan2025@mca.ajce.in">
+                            support@medislot.health
+                        </a>
+                    </div>
+
                 </div>
-                <div className='footer-1'>
-                    <h3>Quick Links</h3>
-                    <p>Find Doctor</p>
-                    <p>Specialties</p>
-                    <p>Hospitals & Clinics</p>
-                    <p>Video Consultations</p>
+
+                <div className="footer-bottom">
+                    <p>©MediSlot. All rights reserved.</p>
                 </div>
-                <div className='footer-1'>
-                    <h3>For Providers</h3>
-                    <p>Join as a Doctor</p>
-                    <p>Provider Portal</p>
-                    <p>Practice Management</p>
-                </div>
-                <div className='footer-1'>
-                    <h3>Company</h3>
-                    <p>About Us</p>
-                    <p>Contact & Support</p>
-                    <p>Careers</p>
-                    <p>Press</p>
-                </div>
-                <div className='footer-1'>
-                    <h3>Contact</h3>
-                    <p>support@medislot.health</p>
-                    <p>+1(800)555-SLOT</p>
-                    <p>100 Health Plaza, San Francisco, CA</p>
-                </div>
-            </div>
+            </footer>
+
+
         </>
     )
 }
