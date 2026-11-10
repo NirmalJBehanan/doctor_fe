@@ -19,6 +19,7 @@ const Forgot = () => {
                     const response = await axios.post("/forgotPassword", values);
 
                     alert(response.data.message);
+                    formik.resetForm()
 
                 } catch (error) {
                     alert(
