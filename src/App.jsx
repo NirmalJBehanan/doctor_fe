@@ -22,6 +22,10 @@ import MyAppointmentHistory from './component/patient/MyAppointmentHistory'
 import AdminUsers from './component/admin/AdminUsers'
 import AdminDoctors from './component/admin/AdminDoctors'
 import AdminAppointments from './component/admin/AdminAppointments'
+import About from './component/homeComponets/About'
+import Contact from './component/homeComponets/Contact'
+import DoctorProfile from './component/doctor/DoctorProfile'
+import PatientProfile from './component/patient/PatientProfile'
 
 const App = () => {
   const { token } = useSelector((state) => state.auth);
@@ -74,7 +78,7 @@ const App = () => {
       element: <Forgot />
     },
     {
-      path: "/reset",
+      path: "/reset/:token",
       element: <Reset />
     },
     {
@@ -124,6 +128,22 @@ const App = () => {
     {
       path: "/admin/appointments",
       element: <AdminAppointments />
+    },
+    {
+      path: "/about",
+      element: <About />
+    },
+    {
+      path: "/contact",
+      element: <Contact />
+    },
+    {
+      path: "/doctor/profile",
+      element: <DoctorProfile />
+    },
+    {
+      path: "/patientProfile",
+      element: <PatientProfile />
     }
   ])
   return (

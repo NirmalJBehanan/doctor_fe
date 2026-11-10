@@ -3,6 +3,7 @@ import "./Forgot.css"
 import { useFormik } from 'formik'
 import * as yup from "yup"
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 const Forgot = () => {
     const formik = useFormik(
         {
@@ -13,8 +14,18 @@ const Forgot = () => {
                 email: yup.string().email("invalid email").required("email is required")
             })
             ,
-            onSubmit: (values) => {
-                console.log(values)
+            onSubmit: async (values) => {
+                try {
+                    const response = await axios.post("/forgotPassword", values);
+
+                    alert(response.data.message);
+
+                } catch (error) {
+                    alert(
+                        error.response?.data?.message ||
+                        "Something went wrong"
+                    );
+                }
             }
         }
     )
@@ -41,7 +52,7 @@ const Forgot = () => {
                             />
                             <button type='submit'>Send Reset Link</button>
                             <Link to="/login">
-                                <i className="fa-solid fa-arrow-left fa-fade fa-sm" style={{color: "rgb(45, 194, 149);"}}></i> Back to Log In
+                                <i className="fa-solid fa-arrow-left fa-fade fa-sm" style={{ color: "rgb(45, 194, 149);" }}></i> Back to Log In
                             </Link>
                         </form>
                     </div>

@@ -1,0 +1,78 @@
+
+.doctor-profile-container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.doctor-profile-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.doctor-profile-card,
+.doctor-profile-form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-profile-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.doctor-profile-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.doctor-profile-card p {
+    margin: 12px 0;
+}
+
+.doctor-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.doctor-profile-form input,
+.doctor-profile-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.doctor-profile-form textarea {
+    min-height: 100px;
+}
+
+.doctor-profile-form button,
+.doctor-profile-card button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #087f8c;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.doctor-profile-form button:hover,
+.doctor-profile-card button:hover {
+    background: #05616b;
+}
+
+@media (max-width: 600px) {
+    .doctor-profile-container {
+        margin: 20px auto;
+        padding: 12px;
+    }
+}

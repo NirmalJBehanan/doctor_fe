@@ -1,0 +1,70 @@
+
+.patient-profile-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.patient-profile-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #263238;
+    font-size: 28px;
+}
+
+.patient-profile-card {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
+}
+
+.patient-profile-card h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #1976d2;
+    margin-bottom: 25px;
+}
+
+.patient-profile-card p {
+    font-size: 16px;
+    color: #555555;
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.patient-profile-card p:last-child {
+    border-bottom: none;
+}
+
+.patient-profile-card strong {
+    color: #263238;
+    display: inline-block;
+    min-width: 80px;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+    .patient-profile-container {
+        margin: 25px 15px;
+        padding: 10px;
+    }
+
+    .patient-profile-container h2 {
+        font-size: 24px;
+    }
+
+    .patient-profile-card {
+        padding: 25px 20px;
+    }
+
+    .patient-profile-card h3 {
+        font-size: 21px;
+    }
+
+    .patient-profile-card p {
+        font-size: 14px;
+    }
+}

@@ -17,8 +17,8 @@ const Head = () => {
                         <h2>Just a Click Away .</h2>
                         <p>Discover trusted doctors, book appointments at your convenience,<br></br> and manage your healthcare in one seamless, HIPAA-compliant<br></br> space.</p>
                         <div className='main-center1-buttons'>
-                            <button>Find a Doctor</button>
-                            <button>How It Works</button>
+                            <Link to="/findDoctors"><button>Find a Doctor</button></Link>
+                            <Link><button>How It Works</button></Link>
                         </div>
                         <div className='main-center1-three'>
                             <div>

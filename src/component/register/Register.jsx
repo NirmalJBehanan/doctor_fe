@@ -4,6 +4,7 @@ import * as yup from "yup"
 import "./Register.css";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
+import Navbars from '../homeComponets/Navbars';
 const Register = () => {
   const navigate = useNavigate();
   const formik = useFormik({
@@ -33,6 +34,7 @@ const Register = () => {
   })
   return (
     <>
+    <Navbars />
       <div className='mainm'>
         <div className='formRegister'>
           {/* section1 starts*/}

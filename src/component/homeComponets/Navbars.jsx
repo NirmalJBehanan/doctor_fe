@@ -90,7 +90,7 @@ const Navbars = () => {
                             </li>
 
                             <li>
-                                <Link to="/patient/profile" onClick={closeMenu}>
+                                <Link to="/patientProfile" onClick={closeMenu}>
                                     My Profile
                                 </Link>
                             </li>
@@ -99,11 +99,7 @@ const Navbars = () => {
 
                     {isAuthenticated && role === "doctor" && (
                         <>
-                            <li>
-                                <Link to="/doctor/dashboard" onClick={closeMenu}>
-                                    My Dashboard
-                                </Link>
-                            </li>
+                           
 
                             <li>
                                 <Link to="/doctorAppointments" onClick={closeMenu}>

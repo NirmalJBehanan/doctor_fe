@@ -1,13 +1,17 @@
 
+/* Main Container */
 .doctor-appointments {
     min-height: 100vh;
+    width: 100%;
     padding: 30px 5%;
     background-color: #f5f7fb;
+    box-sizing: border-box;
 }
 
+/* Heading */
 .doctor-appointments h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 0 0 30px;
     color: #263238;
     font-size: 28px;
 }
@@ -15,11 +19,13 @@
 /* Date Filter */
 .date-filter {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto 35px;
 }
 
 .date-filter label {
@@ -29,7 +35,7 @@
 }
 
 .date-filter input {
-    padding: 10px 12px;
+    padding: 11px 14px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 15px;
@@ -41,17 +47,13 @@
 }
 
 .date-filter button {
-    padding: 10px 18px;
+    padding: 11px 20px;
     border: none;
     border-radius: 6px;
     background-color: #263238;
     color: white;
     cursor: pointer;
     font-size: 14px;
-}
-
-.date-filter button:hover {
-    background-color: #455a64;
 }
 
 /* Messages */
@@ -69,16 +71,26 @@
     margin-top: 40px;
 }
 
-/* Appointment Cards */
+/* Appointment List - Flexbox */
 .appointments-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    width: 100%;
 }
 
+/* Appointment Card */
 .appointment-card {
-    background-color: #fff;
-    padding: 22px;
+    flex: 1 1 300px;
+    max-width: 380px;
+    min-width: 0;
+    box-sizing: border-box;
+
+    background-color: #ffffff;
+    padding: 25px;
     border-radius: 12px;
     border: 1px solid #e5e7eb;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
@@ -86,13 +98,16 @@
 
 .appointment-card h3 {
     color: #263238;
-    margin-bottom: 15px;
+    font-size: 19px;
+    margin: 0 0 18px;
+    overflow-wrap: anywhere;
 }
 
 .appointment-card p {
     color: #555;
-    margin: 10px 0;
+    margin: 12px 0;
     font-size: 15px;
+    overflow-wrap: anywhere;
 }
 
 /* Appointment Status */
@@ -120,19 +135,21 @@
 /* Action Buttons */
 .appointment-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    flex-direction: row;
     flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
 }
 
 .appointment-actions button {
+    flex: 1;
+    min-width: 100px;
+    padding: 11px 15px;
     border: none;
-    padding: 10px 18px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-    transition: 0.2s;
 }
 
 .confirm-btn {
@@ -140,22 +157,22 @@
     color: white;
 }
 
-.confirm-btn:hover {
-    background-color: #146c43;
-}
-
 .complete-btn {
     background-color: #0d6efd;
     color: white;
 }
 
-.complete-btn:hover {
-    background-color: #0a58ca;
-}
-
 .cancel-btn {
     background-color: #dc3545;
     color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #146c43;
+}
+
+.complete-btn:hover {
+    background-color: #0a58ca;
 }
 
 .cancel-btn:hover {
@@ -167,26 +184,97 @@
     cursor: not-allowed;
 }
 
-/* Mobile Responsive */
-@media (max-width: 600px) {
+/* Tablet */
+@media (max-width: 768px) {
+    .doctor-appointments {
+        padding: 25px 20px;
+    }
+
+    .doctor-appointments h2 {
+        font-size: 25px;
+    }
+
+    .date-filter {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .date-filter label {
+        text-align: center;
+    }
+
+    .date-filter input,
+    .date-filter button {
+        width: 100%;
+        max-width: 320px;
+        box-sizing: border-box;
+    }
+
+    .appointments-list {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .appointment-card {
+        flex: 1 1 280px;
+        max-width: 450px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
     .doctor-appointments {
         padding: 20px 15px;
     }
 
     .doctor-appointments h2 {
-        font-size: 23px;
+        font-size: 22px;
+        margin-bottom: 25px;
     }
 
     .date-filter {
-        flex-direction: column;
+        width: 100%;
     }
 
-    .date-filter input {
+    .date-filter label {
+        font-size: 14px;
+    }
+
+    .date-filter input,
+    .date-filter button {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
+    }
+
+    .appointments-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
     }
 
     .appointment-card {
-        padding: 17px;
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        padding: 20px;
+    }
+
+    .appointment-card h3 {
+        font-size: 17px;
+    }
+
+    .appointment-card p {
+        font-size: 14px;
+    }
+
+    .appointment-actions {
+        flex-direction: row;
+    }
+
+    .appointment-actions button {
+        flex: 1;
+        min-width: 0;
+        padding: 10px;
     }
 }
