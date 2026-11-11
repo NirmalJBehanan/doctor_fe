@@ -105,16 +105,20 @@ const MyAppointments = () => {
 
     if (loading) {
         return (
-            <div className="appointments-container">
-                <h2>My Appointments</h2>
-                <p>Loading appointments...</p>
-            </div>
+            <>
+                <Navbars />
+                <div className="appointments-container">
+                    <h2>My Appointments</h2>
+                    <p>Loading appointments...</p>
+                </div>
+            </>
         );
     }
 
     return (
         <>
             <Navbars />
+
             <div className="appointments-container">
 
                 <h2>My Appointments</h2>
@@ -150,7 +154,7 @@ const MyAppointments = () => {
                         >
 
                             <h3>
-                                 {appointment.doctorId?.name || "Doctor"}
+                                {appointment.doctorId?.name || "Doctor"}
                             </h3>
 
                             <p>
@@ -170,7 +174,8 @@ const MyAppointments = () => {
                                 </span>
                             </p>
 
-                            {["pending", "confirmed"].includes(appointment.appointmentStatus) && (
+                            {/* Show cancel button only for pending appointments */}
+                            {appointment.appointmentStatus === "pending" && (
                                 <button
                                     className="cancel-btn"
                                     onClick={() => handleCancel(appointment._id)}
@@ -181,6 +186,7 @@ const MyAppointments = () => {
                                         : "Cancel Appointment"}
                                 </button>
                             )}
+
                         </div>
 
                     ))}
