@@ -150,7 +150,7 @@ const MyAppointments = () => {
                         >
 
                             <h3>
-                                Dr. {appointment.doctorId?.name || "Doctor"}
+                                 {appointment.doctorId?.name || "Doctor"}
                             </h3>
 
                             <p>
