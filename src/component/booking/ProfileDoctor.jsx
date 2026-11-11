@@ -285,7 +285,7 @@ const ProfileDoctor = () => {
 
                         <div className="doctor-details">
 
-                            <h2>Dr. {doctor.doctorId.name}</h2>
+                            <h2>{doctor.doctorId.name}</h2>
 
                             <p className="specialization">
                                 {doctor.specialization}
