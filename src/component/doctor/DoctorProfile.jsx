@@ -9,6 +9,7 @@ import Navbars from "../homeComponets/Navbars";
 const DoctorProfile = () => {
 
     const [profile, setProfile] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [message, setMessage] = useState("");
     const [image, setImage] = useState(null);
@@ -18,20 +19,20 @@ const DoctorProfile = () => {
     // Fetch doctor profile
     const getProfile = async () => {
         try {
-            const response = await axios.get(
-                "/me",
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+            const response = await axios.get("/me", {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            );
+            });
 
             setProfile(response.data.doctorProfile);
 
         } catch (error) {
             console.log(error);
             setMessage("Unable to fetch profile");
+
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -56,8 +57,8 @@ const DoctorProfile = () => {
             description: profile?.description || "",
             specialization: profile?.specialization || "",
             qualification: profile?.qualification || "",
-            experience: profile?.experience || "",
-            consultationFee: profile?.consultationFee || ""
+            experience: profile?.experience ?? "",
+            consultationFee: profile?.consultationFee ?? ""
         },
 
         validationSchema,
@@ -74,159 +75,228 @@ const DoctorProfile = () => {
                     formData.append("image", image);
                 }
 
-                const response = await axios.put(
-                    "/updateDoctorProfile",
-                    formData,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`
+                let response;
+
+                if (profile) {
+
+                    // Existing profile: Update
+                    response = await axios.put(
+                        "/updateDoctorProfile",
+                        formData,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
                         }
-                    }
-                );
+                    );
+
+                } else {
+
+                    // First-time profile: Create
+                    response = await axios.post(
+                        "/createDoctorProfile",
+                        formData,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        }
+                    );
+                }
 
                 setMessage(response.data.message);
-                setEditMode(false);
+
                 setImage(null);
+                setEditMode(false);
 
                 // Fetch updated profile
-                getProfile();
+                setLoading(true);
+                await getProfile();
 
             } catch (error) {
+                console.log(error);
+
                 setMessage(
                     error.response?.data?.message ||
-                    "Profile update failed"
+                    "Profile operation failed"
                 );
             }
         }
     });
 
-    if (!profile) {
-        return <h3>Loading doctor profile...</h3>;
+    // Loading state
+    if (loading) {
+        return (
+            <>
+                <Navbars />
+                <h3>Loading doctor profile...</h3>
+            </>
+        );
+    }
+
+    // Profile fetch failed or token unavailable
+    if (!token && !profile) {
+        return (
+            <>
+                <Navbars />
+                <h3>Please login to continue.</h3>
+            </>
+        );
     }
 
     return (
         <>
-        <Navbars />
-        
-        <div className="doctor-profile-container">
+            <Navbars />
 
-            <h2>My Doctor Profile</h2>
+            <div className="doctor-profile-container">
 
-            {message && <p>{message}</p>}
+                <h2>
+                    {profile ? "My Doctor Profile" : "Create Doctor Profile"}
+                </h2>
 
-            {!editMode ? (
+                {message && <p>{message}</p>}
 
-                <div className="doctor-profile-card">
+                {profile && !editMode ? (
 
-                    {profile.profileImage && (
-                        <img
-                            src={`https://doctor-be-gbwe.onrender.com/api/doctor-image/${profile.profileImage}`}
-                            alt="Doctor"
-                            className="doctor-profile-image"
-                        />
-                    )}
+                    // Display existing profile
+                    <div className="doctor-profile-card">
 
-                    <h3>{profile.specialization}</h3>
+                        {profile.profileImage && (
+                            <img
+                                src={`https://doctor-be-gbwe.onrender.com/api/doctor-image/${profile.profileImage}`}
+                                alt="Doctor"
+                                className="doctor-profile-image"
+                            />
+                        )}
 
-                    <p><strong>Qualification:</strong> {profile.qualification}</p>
+                        <h3>{profile.specialization}</h3>
 
-                    <p><strong>Experience:</strong> {profile.experience} years</p>
+                        <p>
+                            <strong>Qualification:</strong> {profile.qualification}
+                        </p>
 
-                    <p><strong>Consultation Fee:</strong> ₹{profile.consultationFee}</p>
+                        <p>
+                            <strong>Experience:</strong> {profile.experience} years
+                        </p>
 
-                    <p><strong>Description:</strong> {profile.description}</p>
+                        <p>
+                            <strong>Consultation Fee:</strong> ₹{profile.consultationFee}
+                        </p>
 
-                    <button onClick={() => setEditMode(true)}>
-                        Edit Profile
-                    </button>
+                        <p>
+                            <strong>Description:</strong> {profile.description}
+                        </p>
 
-                </div>
+                        <button onClick={() => setEditMode(true)}>
+                            Edit Profile
+                        </button>
 
-            ) : (
+                    </div>
 
-                <form onSubmit={formik.handleSubmit} className="doctor-profile-form">
+                ) : (
 
-                    <label>Description</label>
-                    <textarea
-                        name="description"
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.touched.description && formik.errors.description && (
-                        <p>{formik.errors.description}</p>
-                    )}
-
-                    <label>Specialization</label>
-                    <input
-                        type="text"
-                        name="specialization"
-                        value={formik.values.specialization}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.touched.specialization && formik.errors.specialization && (
-                        <p>{formik.errors.specialization}</p>
-                    )}
-
-                    <label>Qualification</label>
-                    <input
-                        type="text"
-                        name="qualification"
-                        value={formik.values.qualification}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.touched.qualification && formik.errors.qualification && (
-                        <p>{formik.errors.qualification}</p>
-                    )}
-
-                    <label>Experience</label>
-                    <input
-                        type="number"
-                        name="experience"
-                        value={formik.values.experience}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.touched.experience && formik.errors.experience && (
-                        <p>{formik.errors.experience}</p>
-                    )}
-
-                    <label>Consultation Fee</label>
-                    <input
-                        type="number"
-                        name="consultationFee"
-                        value={formik.values.consultationFee}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.touched.consultationFee && formik.errors.consultationFee && (
-                        <p>{formik.errors.consultationFee}</p>
-                    )}
-
-                    <label>Profile Image</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files[0])}
-                    />
-
-                    <button type="submit">
-                        Update Profile
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setEditMode(false);
-                            setImage(null);
-                            formik.resetForm();
-                        }}
+                    // Create or edit profile form
+                    <form
+                        onSubmit={formik.handleSubmit}
+                        className="doctor-profile-form"
                     >
-                        Cancel
-                    </button>
 
-                </form>
+                        <label>Description</label>
+                        <textarea
+                            name="description"
+                            value={formik.values.description}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
 
-            )}
+                        {formik.touched.description && formik.errors.description && (
+                            <p>{formik.errors.description}</p>
+                        )}
 
-        </div>
+                        <label>Specialization</label>
+                        <input
+                            type="text"
+                            name="specialization"
+                            value={formik.values.specialization}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+
+                        {formik.touched.specialization && formik.errors.specialization && (
+                            <p>{formik.errors.specialization}</p>
+                        )}
+
+                        <label>Qualification</label>
+                        <input
+                            type="text"
+                            name="qualification"
+                            value={formik.values.qualification}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+
+                        {formik.touched.qualification && formik.errors.qualification && (
+                            <p>{formik.errors.qualification}</p>
+                        )}
+
+                        <label>Experience</label>
+                        <input
+                            type="number"
+                            name="experience"
+                            value={formik.values.experience}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+
+                        {formik.touched.experience && formik.errors.experience && (
+                            <p>{formik.errors.experience}</p>
+                        )}
+
+                        <label>Consultation Fee</label>
+                        <input
+                            type="number"
+                            name="consultationFee"
+                            value={formik.values.consultationFee}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+
+                        {formik.touched.consultationFee && formik.errors.consultationFee && (
+                            <p>{formik.errors.consultationFee}</p>
+                        )}
+
+                        <label>Profile Image</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
+                        />
+
+                        <button type="submit" disabled={formik.isSubmitting}>
+                            {formik.isSubmitting
+                                ? "Please wait..."
+                                : profile
+                                    ? "Update Profile"
+                                    : "Create Profile"}
+                        </button>
+
+                        {profile && (
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setEditMode(false);
+                                    setImage(null);
+                                    formik.resetForm();
+                                }}
+                            >
+                                Cancel
+                            </button>
+                        )}
+
+                    </form>
+                )}
+
+            </div>
         </>
     );
 };
